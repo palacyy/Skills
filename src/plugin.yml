@@ -1,0 +1,7 @@
+name: Skills
+main: me.paper.skills.SkillPlugin
+version: 1.0
+author: Paper
+description: A skills plugin developed by Paper.
+commands:
+  skills:

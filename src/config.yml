@@ -1,0 +1,245 @@
+#
+#     Skills - by Paper
+#
+
+upgrade_npc:
+      name: "&a&l&oSkill Shop"
+
+messages:
+  skill_cooldown:
+    pvp: "&8» &cYou cannot use another &c&lPVP &cskill for another: %time%"
+    nonPvp: "&8» &cYou cannot use another &c&lNON-PVP &cskill for another: %time%"
+  enabled_skill: "&8» &eActivating skill: &6%skill%"
+  disabled_skill: "&8» &cDeactivating skill: &6%skill%"
+  cannot_select_skill: "&cYou cannot select another skill since you're on a cooldown for those skill types."
+  selected_skill: "&8» &eYou have selected the skill: &a&l&o%skill%"
+  cannot_afford: "&cYou cannot afford this upgrade."
+  bought_upgrade: "&8» &bYou upgraded &d&l%skill% &bto level &d%level%&b."
+
+inventories:
+  upgrade:
+    name: "&cUpgrade Menu"
+    skill_lore:
+      - "&7Current Level &8&l» &a%level%"
+      - "&7Upgrade Cost &8&l» &a%cost%"
+  back_item:
+    material: "ARROW"
+    name: "&eGo back."
+  default:
+    name: "&b&lM&f&lSB &8&l\u2726 &8Skills"
+    items:
+      pvp_item:
+        material: "DIAMOND_SWORD"
+        name: "&b&lM&f&lSB &8&l\u2726 &cPvP &8Skills"
+        lore:
+          - "&7Click on this item to see"
+          - "&7your purchased pvp"
+          - "&7skills."
+      nonPvp_item:
+        material: "DIAMOND_PICKAXE"
+        name: "&b&lM&f&lSB &8&l\u2726 &cNON-PvP &8Skills"
+        lore:
+          - "&7Click on this item to see"
+          - "&7your non-pvp purchased"
+          - "&7skills."
+  unlocked_pvp:
+    name: "&cUnlocked combat skills..."
+    items:
+      unlocked_item:
+        name: "&l&o%skill% &7(&aUnlocked&7)"
+        lore:
+          - "&7Click to select as your"
+          - "&7current pvp skill."
+          - ""
+          - "&7Current Level &8&l» &a%level%"
+      locked_item:
+        name: "&l&o%skill% &7(&cLocked&7)"
+        lore:
+          - "&7Unlock this item using"
+          - "&7the NPC at spawn."
+          - ""
+  unlocked_noPvp:
+    name: "&cUnlocked non-pvp skills..."
+    items:
+      unlocked_item:
+        name: "&l&o%skill% &7(&aUnlocked&7)"
+        lore:
+          - "&7Click to select as your"
+          - "&7current non-pvp skill."
+          - ""
+          - "&7Current Level &8&l» &a%level%"
+      locked_item:
+        name: "&l&o%skill% &7(&cLocked&7)"
+        lore:
+          - "&7Unlock this item using"
+          - "&7the NPC at spawn."
+          - ""
+
+skills:
+  pvpCooldown: 2 #In minutes
+  nonPvpCooldown: 5 #In minutes
+  bloodthirsty:
+    color: "RED" #Color displayed in the GUI
+    health_limit: 5 #How many hearts they have to be on for the skill to work (double the amount meaning 5 - 2.5 hearts)
+    max_level: 2
+    duration: 20 #in seconds
+    levels:
+      1:
+        cost: 1000
+        damage: 5 #how much percent more damage on top of original damage
+      2:
+        cost: 2000
+        damage: 10
+  infused:
+    color: "BLUE"
+    max_level: 2
+    duration: 15
+    levels:
+      1:
+        cost: 1000
+        damage: 2 #how much percent more damage on top of original damage
+      2:
+        cost: 2000
+        damage: 3
+  protective:
+    color: "YELLOW"
+    max_level: 2
+    duration: 12
+    levels:
+      1:
+        cost: 1000
+        protection: 5 #what protection level the person gets on all armor
+      2:
+        cost: 2000
+        protection: 10
+  healthy:
+    color: "GOLD"
+    max_level: 2
+    duration: 10
+    levels:
+      1:
+        cost: 1000
+        hearts: 1 #how many extra hearts they get, (its doubled, meaning 1 is 0.5 hearts etc)
+      2:
+        cost: 2000
+        hearts: 2
+  robust:
+    color: "GREEN"
+    max_level: 2
+    duration: 10
+    levels:
+      1:
+        cost: 1000
+        speed: 1 #what speed they go at, play around with this, 0.2 is default minecraft, anything above that is faster
+      2:
+        cost: 2000
+        speed: 0.9
+  harmony:
+    color: "DARK_GREEN"
+    max_level: 2
+    duration: 10
+    levels:
+      1:
+        cost: 1000
+        damage: 5 #the percent of extra damage on top of original
+        hearts: 1 #how many extra hearts they get, (its doubled, meaning 1 is 0.5 hearts etc)
+        armor: 10 #how much less damage percent the person takes
+      2:
+        cost: 2000
+        damage: 10
+        hearts: 2
+        armor: 20
+  bleed:
+    color: "RED"
+    max_level: 2
+    duration: 20
+    bleed_duration: 10 #duration in seconds
+    max_players: 1 #max players a person can have bleeding at once
+    levels:
+      1:
+        cost: 1000
+        damage: 2 #how much damage it gives per second, 2 meaning 1 minecraft heart
+      2:
+        cost: 2000
+        damage: 2
+  shattered:
+    color: "DARK_AQUA"
+    max_level: 2
+    duration: 20
+    levels:
+      1:
+        cost: 1000
+        armor: 10 #percent of how much more armor damage on top of original damage does the opponent do
+      2:
+        cost: 2000
+        armor: 20
+  fisherman:
+    color: "YELLOW"
+    max_level: 2
+    duration: 400
+    levels:
+      1:
+        cost: 1000
+        rewards:
+          - "give %player% diamondblock 1:50"   #List of commands, seperated by chances with :
+          - "give %player% ironblock 5:30"
+      2:
+        cost: 2000
+        rewards:
+          - "give %player% diamondblock 1:50"
+          - "give %player% ironblock 5:30"
+  miner:
+    color: "RED"
+    max_level: 2
+    duration: 10
+    levels:
+      1:
+        cost: 1000
+        radius: 3 #radius of every single block while in the skill, play around with the value
+        efficiency: 6 #the efficiency the pick gets when the skill is enabled
+        fortune: 10 #the fortune the pick gets when the skill is enabled
+        rewards:
+          - "give %player% diamondblock 1:50"
+          - "give %player% ironblock 5:30"
+      2:
+        cost: 2000
+        radius: 4
+        efficiency: 7
+        fortune: 15
+        rewards:
+          - "give %player% diamondblock 1:50"
+          - "give %player% ironblock 5:30"
+  farmer:
+    color: "BLUE"
+    max_level: 2
+    duration: 10
+    levels:
+      1:
+        cost: 1000
+        efficiency: 6 #the efficiency the hoe gets when the skill is enabled
+        fortune: 10 #the fortune the hoe gets when the skill is enabled
+        rewards:
+          - "give %player% diamondblock 1:50"
+          - "give %player% ironblock 5:30"
+      2:
+        cost: 2000
+        efficiency: 7
+        fortune: 15
+        rewards:
+          - "give %player% diamondblock 1:50"
+          - "give %player% ironblock 5:30"
+  grinder:
+    color: "GOLD"
+    max_level: 2
+    duration: 15
+    levels:
+      1:
+        cost: 1000
+        rewards:
+          - "give %player% diamondblock 1:50"
+          - "give %player% ironblock 5:30"
+      2:
+        cost: 2000
+        rewards:
+          - "give %player% diamondblock 1:50"
+          - "give %player% ironblock 5:30"
